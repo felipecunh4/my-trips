@@ -10,6 +10,7 @@ export type IPlacesTemplateProps = {
     name: string
     description: {
       html: string
+      text: string
     }
     gallery: IGallery[]
   }

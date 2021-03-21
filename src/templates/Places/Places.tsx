@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router'
 import { IPlacesTemplateProps } from './types'
 
 import Image from 'next/image'
+import { NextSeo } from 'next-seo'
 import LinkWrapper from 'components/LinkWrapper/LinkWrapper'
 
 import * as S from './styles'
@@ -31,6 +32,21 @@ export default function PlacesTemplate(props: IPlacesTemplateProps) {
 
   return (
     <>
+      <NextSeo
+        title={`${props.place.name} - My Trips`}
+        description={props.place.description?.text}
+        canonical="https://my-trips.felipecunh4.com.br/"
+        openGraph={{
+          images: [
+            {
+              url: props.place.gallery[0].url,
+              width: props.place.gallery[0].width,
+              height: props.place.gallery[0].height,
+              alt: props.place.name
+            }
+          ]
+        }}
+      />
       <LinkWrapper href="/">
         <CloseOutline size={32} aria-label="Go back to map" />
       </LinkWrapper>
